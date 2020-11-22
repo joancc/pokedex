@@ -24,12 +24,15 @@
         </button>
       </div>
       <div class="flex items-center justify-between">
+        <label for="search" class="sr-only">Search</label>
         <input
+          id="search"
           type="text"
           placeholder="Search"
           v-model="search"
           class="w-full h-10 p-2 bg-gray-100 rounded-lg"
         />
+        <label for="type" class="sr-only">Type</label>
         <select
           name="type"
           id="type"
@@ -45,7 +48,9 @@
           class="w-20 h-20 ml-4 text-green-500"
           @click="displayGrid = false"
         >
+          <span class="sr-only">Toggle List</span>
           <svg
+            aria-hidden="true" focusable="false"
             xmlns="http://www.w3.org/2000/svg"
             fill="none"
             viewBox="0 0 24 24"
@@ -63,7 +68,9 @@
           class="w-20 h-20 ml-4 text-green-500"
           @click="displayGrid = true"
         >
+          <span class="sr-only">Toggle Grid</span>
           <svg
+            aria-hidden="true" focusable="false"
             xmlns="http://www.w3.org/2000/svg"
             viewBox="0 0 20 20"
             fill="currentColor"
@@ -75,13 +82,11 @@
         </button>
       </div>
     </nav>
-    <div v-if="!$apollo.loading && pokemons.edges.length === 0">
-      No results found
-    </div>
+    <div v-if="!$apollo.loading && pokemons.edges.length === 0">No results found</div>
     <div v-if="pokemons">
-      <div v-if="displayGrid" class="grid grid-cols-5 gap-4 mt-4">
+      <div v-if="displayGrid" class="grid grid-cols-4 gap-4 mt-4 lg:grid-cols-5">
         <PokemonCard
-          v-for="pokemon in pokemons.edges"
+          v-for="pokemon in filteredPokemon"
           :key="pokemon.id"
           :pokemon="pokemon"
           :favorite="favorite"
@@ -91,7 +96,7 @@
       </div>
       <ul v-else>
         <PokemonRow
-          v-for="pokemon in pokemons.edges"
+          v-for="pokemon in filteredPokemon"
           :key="pokemon.id"
           :pokemon="pokemon"
           :favorite="favorite"
@@ -99,7 +104,7 @@
         />
       </ul>
       <IntersectionObserver
-        :key="pokemons.edges.length"
+        :key="filteredPokemon.length"
         :callback="fetchMorePokemons"
       />
     </div>
@@ -147,6 +152,12 @@ export default {
     };
   },
   computed: {
+    filteredPokemon() {
+      if (this.isFavorite) {
+        return this.pokemons.edges.filter(pokemon => pokemon.isFavorite)
+      }
+      return this.pokemons.edges
+    },
     variables() {
       return {
         input: {

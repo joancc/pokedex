@@ -18,7 +18,7 @@
           <p class="font-bold">
             {{ pokemon.name }}
           </p>
-          <p class="text-xs">
+          <p class="text-xs truncate">
             {{ pokemon.classification }}
           </p>
         </router-link>
@@ -26,6 +26,7 @@
           <button
             class="w-5 h-5 text-red-900"
             @click="pokemon.isFavorite ? unfavorite(pokemon.id) : favorite(pokemon.id)"
+            :data-testid="`like-${pokemon.name}`"
           >
             <svg
               v-if="pokemon.isFavorite"
@@ -78,7 +79,8 @@
       v-if="canFlip"
       class="absolute top-0 right-0 w-4 h-4 m-2 text-green-500"
       :class="{ hidden: flip }"
-      @click.stop.capture="flip = !flip"
+      @click.stop.capture="flip = true"
+      :data-testid="`flipback-${pokemon.name}`"
     >
       <svg
         xmlns="http://www.w3.org/2000/svg"
@@ -98,7 +100,8 @@
       class="absolute top-0 left-0 w-4 h-4 m-2 text-green-500"
       style="transform: rotateY(180deg);"
       :class="{ hidden: !flip }"
-      @click="flip = !flip"
+      @click="flip = false"
+      :data-testid="`flipfront-${pokemon.name}`"
     >
       <svg
         xmlns="http://www.w3.org/2000/svg"
