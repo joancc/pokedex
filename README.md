@@ -1,3 +1,12 @@
+# SOLUTION
+
+External dependencies not included by default in the project:
+
+- TailwindCSS for styling.
+- Cypress Testing Library for e2e testing.
+- Icon svg copied from Heroicons
+- VueApollo for querying and state management.
+
 # Coding Exercise Frontend
 
 This repository contains a coding exercise for new developers joining the frontend development team. This version is focused in Vue.
@@ -8,9 +17,9 @@ Fork this repository and create your own exercise!
 
 Your mission is to build a small [Pokedex](https://www.pokemon.com/us/pokedex/) application that looks similar to the next (but remember, you have freedom to express yourself!):
 
-List View           |  Detail View
-:-------------------------:|:-------------------------:
-![](example/example-list-view.png) |  ![](example/example-detail-view.png)
+|             List View              |             Detail View              |
+| :--------------------------------: | :----------------------------------: |
+| ![](example/example-list-view.png) | ![](example/example-detail-view.png) |
 
 A video example can be found in the example folder in the root of the directory as `example.mov`
 
@@ -26,6 +35,7 @@ The features we expect that your app would contain would be:
 - On the Pokemon details page, have a speaker icon that, when clicked, plays the sound of that Pokemon.
 
 In addition to the above features, below are some optional features that we'd love to see:
+
 - Infinitely scrolled or paginated list to handle on-demand data-fetching for the long list of Pokemon.
 - Add a quick view button on the Pokemon list items that shows a modal with more information of the Pokemon.
 - Add toast notifications to show success or error messages when adding or removing a Pokemon to and from your Favorites.
@@ -34,6 +44,7 @@ In addition to the above features, below are some optional features that we'd lo
 ## What we provide in this repository
 
 ### Backend (`/backend`)
+
 We have provided you with a simple [GraphQL](https://graphql.org/learn) server that serves Pokemon data. The server is non-persistent and therefore on server restart, data will reset.
 
 To run the server:
@@ -47,14 +58,16 @@ $ npm start
 After running the backend, you can access https://localhost:4000/graphql in the browser, you'll be presented with a GraphQL Playground that allows you to run Queries and Mutations as well as view the GraphQL Schema.
 
 A sample query:
+
 ```
 query { pokemons(query: { limit: 10, offset: 0 }) { edges { name } } }
 ```
 
 ### Frontend (`/frontend`)
+
 Within the folder frontend there is a simple boilerplate of a Vue app, created using the Vue CLI and based on the default Sites preset which includes: vue-router, vuex, sass, babel, eslint, unit-jest, e2e-cypress. Feel free to change this folder as you wish.
 
-To run the frontend: 
+To run the frontend:
 
 ```
 $ cd frontend
@@ -75,10 +88,11 @@ You are free to use whatever stack you want but what we value the most is [Vue](
 
 Use only what you are comfortable with and feel free to use any additional libraries you deem necessary to complete the exercise. You can use any component libraries such as [Vuetify](https://vuetifyjs.com/en/), etc. **However**, we would like to see your CSS skills so make sure you show them to us! (layout, animation/transitions...).
 
-
 ### Hints
+
 - There is no need to configure a build, the development environment is sufficient.
 - It's recommented to use a CSS pre-processor, by default the frontend boilerplate comes with Sass.
-- **Tests** are important and if time allows it, we'd like to see *some* test coverage.
+- **Tests** are important and if time allows it, we'd like to see _some_ test coverage.
 - Feel free to ask us if you have any doubt or you face any problem!
+
 # pokedex
