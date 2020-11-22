@@ -110,12 +110,10 @@ export default {
       }
     }
   },
-  data() {
-    return {
-      variables: {
-        id: this.$route.params.id
-      }
-    };
+  computed: {
+    variables() {
+      return {id: this.$route.params.id}
+    }
   },
   methods: {
     favorite(pokemonId) {

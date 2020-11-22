@@ -14,7 +14,7 @@
         />
       </div>
       <div class="flex items-center justify-between p-4 bg-gray-300 rounded-b">
-        <router-link :to="{ name: 'detail', params: { id: pokemon.id } }">
+        <router-link class="hover:text-gray-500" :to="{ name: 'detail', params: { id: pokemon.id } }">
           <p class="font-bold">
             {{ pokemon.name }}
           </p>
