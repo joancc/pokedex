@@ -25,9 +25,7 @@
         <div>
           <button
             class="w-5 h-5 text-red-900"
-            @click="
-              pokemon.isFavorite ? unfavorite(pokemon.id) : favorite(pokemon.id)
-            "
+            @click="pokemon.isFavorite ? unfavorite(pokemon.id) : favorite(pokemon.id)"
           >
             <svg
               v-if="pokemon.isFavorite"

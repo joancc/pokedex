@@ -193,6 +193,8 @@ export default {
         },
         update: (store, { data: { favoritePokemon } }) => {
           // Read the data from our cache for this query.
+          if (!favoritePokemon)  return
+
           const variables = {
             input: {
               offset: 0,
@@ -212,12 +214,6 @@ export default {
             updatedPokemon.isFavorite = favoritePokemon.isFavorite;
             store.writeQuery({ query: GET_POKEMONS, data, variables });
           }
-
-          window.favoritePokemon = favoritePokemon;
-          window.data = data;
-          // // Add our tag from the mutation to the end
-          // data.tags.push(addTag)
-          // // Write our data back to the cache.
         },
         // // Optimistic UI
         // // Will be treated as a 'fake' result as soon as the request is made

@@ -10,6 +10,9 @@
     "lint": "vue-cli-service lint"
   },
   "dependencies": {
+    "@cypress/webpack-preprocessor": "^5.4.11",
+    "@testing-library/cypress": "^7.0.1",
+    "@testing-library/dom": "^7.28.1",
     "@testing-library/user-event": "^12.2.2",
     "autoprefixer": "^9.0.0",
     "core-js": "^2.6.5",
