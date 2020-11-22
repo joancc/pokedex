@@ -1,5 +1,5 @@
 <template>
-  <div class="container mx-auto">
+  <div class="container p-4 mx-auto">
     <nav class="py-4 border-b">
       <div class="flex">
         <button
@@ -79,7 +79,7 @@
       No results found
     </div>
     <div v-if="pokemons">
-      <div v-if="displayGrid" class="grid grid-cols-6 gap-4 mt-4">
+      <div v-if="displayGrid" class="grid grid-cols-5 gap-4 mt-4">
         <PokemonCard
           v-for="pokemon in pokemons.edges"
           :key="pokemon.id"

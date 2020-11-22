@@ -61,14 +61,14 @@
       v-if="canFlip"
       class="absolute flex flex-col items-center justify-center h-full bg-white rounded-t-lg back"
     >
-      <p class="text-lg font-bold">Attacks</p>
-      <ul v-if="pokemon.attacks.fast">
+      <p class="font-bold">Attacks</p>
+      <ul v-if="pokemon.attacks.fast" class="text-sm">
         <li v-for="attack in pokemon.attacks.fast" :key="attack.name">
           {{ attack.name }} - {{ attack.damage }} - {{ attack.type }}
         </li>
       </ul>
       <hr />
-      <ul v-if="pokemon.attacks.special">
+      <ul v-if="pokemon.attacks.special" class="text-sm">
         <li v-for="attack in pokemon.attacks.special" :key="attack.name">
           {{ attack.name }} - {{ attack.damage }} - {{ attack.type }}
         </li>
